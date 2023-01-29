@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: ReplicaSet # type of manifest/resource
+metadata:
+  #name: name of pod
+  name: goserver
+  #label: type identification
+  labels:
+    app: goserver
+spec:
+  #selector: select label to replicaset
+  selector: 
+    #matchLabels: filter specific label
+    matchLabels:
+      #app: selected label name
+      app: goserver 
+  #replicas: quantity replica (pod) to create
+  replicas: 3
+  #template: bellow template of pod to create to replicas
+  template: #template da nossa replica (POD)
+    metadata:
+      labels:
+        app: "goserver"
+    spec: 
+      containers:
+        - name: goserver
+          image: "cleano/hello-go:v2" 

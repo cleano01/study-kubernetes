@@ -1,0 +1,88 @@
+apiVersion: apps/v1
+kind: Deployment # type of manifest/resource
+metadata:
+  #name: name of pod
+  name: goserver
+  #label: type identification
+  labels:
+    app: goserver
+spec:
+  #selector: select label to replicaset
+  selector: 
+    #matchLabels: filter specific label
+    matchLabels:
+      #app: selected label name
+      app: goserver 
+  #replicas: quantity replica (pod) to create
+  replicas: 3
+  #template: bellow template of pod to create to replicas
+  template: 
+    metadata:
+      labels:
+        app: "goserver"
+    spec: 
+      containers:
+        - name: goserver 
+          image: "cleano/hello-go:v5.5.1" 
+          #resources: resource of container
+          resources: 
+            #requests: minimum requirement to run pod
+            requests:
+              cpu: "0.5" #minimum cpu usage (using millicores, in this case 100 millicore)
+              memory: 20Mi #minimal RAM usage
+            #limits: maximum pod resource usage
+            limits: 
+              cpu: "0.6"
+              memory: 25Mi              
+              
+
+          startupProbe: #verifica se aplicação estar pronta para receber trafego
+            httpGet:
+              path: /healthz #end point para checar a aplicação
+              port: 8000
+            periodSeconds: 3 #checa a aplicação de X em X segundos
+            failureThreshold: 30 #quantidade de erros limites para reinicar
+            
+          readinessProbe: #verifica se aplicação estar pronta para receber trafego
+            httpGet:
+              path: /healthz #end point para checar a aplicação
+              port: 8000
+            periodSeconds: 3 #checa a aplicação de X em X segundos
+            failureThreshold: 1 #quantidade de erros limites para reinicar
+            timeoutSeconds: 1 #demora de X segundos no healthz para request  em /healthz
+            #initialDelaySeconds:  10 #aguarda X segundos para começar a verificar a aplicação se pode receber trafego
+   
+          livenessProbe: #checa a aplicação
+            httpGet:
+              path: /healthz #end point para checar a aplicação
+              port: 8000
+            periodSeconds: 5 #checa a aplicação de X em X segundos
+            failureThreshold: 1 #quantidade de erros limites para reinicar
+            timeoutSeconds: 1 #demora de X segundos no healthz para request  em /healthz
+            successThreshold: 1 #quantidade de vezes que aplicação precisa para dizer que estar "ok"
+            #initialDelaySeconds: 15
+            
+          envFrom: #desse modo, pegamos todas as env que estão no configmap
+            - configMapRef:
+                name: goserver-env   #nome do configmap 
+            - secretRef: #pegando a secret
+                name: goserver-secret #nome de nossa secret
+          volumeMounts: #criando um volume para o container
+            - mountPath: "/go/myfamily" #caminho do nosso volume
+              name: config #pegamos o volume que criamos com nome "config"
+              readOnly: true
+            - mountPath: "/go/pvc"
+              name: goserver-volume #aqui estamos identificando nosso PVC
+              
+
+      volumes: #estamos criando um volume aqui, para injetar o confimap-family
+        - name: config
+          configMap:
+            name: configmap-family
+            items:
+              - key: members
+                path: "family.txt"
+        - name: goserver-volume 
+          persistentVolumeClaim:
+            claimName:  goserver-pvc #Nome do nosso PVC      
+        

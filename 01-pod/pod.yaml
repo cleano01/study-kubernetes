@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod 
+metadata:
+  name: "goserver"
+  labels:
+    app: "goserver"
+spec: #especificação do POD
+  containers:
+    - name: goserver #nome do container
+      image: "cleano/hello-go:latest" #endereço para pegar a imagem
+

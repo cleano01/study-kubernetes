@@ -16,7 +16,7 @@ spec:
   #replicas: quantity replica (pod) to create
   replicas: 3
   #template: bellow template of pod to create to replicas
-  template: #template da nossa replica (POD)
+  template: 
     metadata:
       labels:
         app: "goserver"

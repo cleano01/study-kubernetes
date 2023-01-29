@@ -35,14 +35,15 @@ spec:
               cpu: "0.6"
               memory: 25Mi              
               
-
+          #startupProbe:
           startupProbe: #verifica se aplicação estar pronta para receber trafego
             httpGet:
               path: /healthz #end point para checar a aplicação
               port: 8000
             periodSeconds: 3 #checa a aplicação de X em X segundos
             failureThreshold: 30 #quantidade de erros limites para reinicar
-            
+          
+          #readinessProbe:
           readinessProbe: #verifica se aplicação estar pronta para receber trafego
             httpGet:
               path: /healthz #end point para checar a aplicação
@@ -51,7 +52,8 @@ spec:
             failureThreshold: 1 #quantidade de erros limites para reinicar
             timeoutSeconds: 1 #demora de X segundos no healthz para request  em /healthz
             #initialDelaySeconds:  10 #aguarda X segundos para começar a verificar a aplicação se pode receber trafego
-   
+          
+          #livenessProbe:
           livenessProbe: #checa a aplicação
             httpGet:
               path: /healthz #end point para checar a aplicação
@@ -61,7 +63,8 @@ spec:
             timeoutSeconds: 1 #demora de X segundos no healthz para request  em /healthz
             successThreshold: 1 #quantidade de vezes que aplicação precisa para dizer que estar "ok"
             #initialDelaySeconds: 15
-            
+          
+          #envFrom:
           envFrom: #desse modo, pegamos todas as env que estão no configmap
             - configMapRef:
                 name: goserver-env   #nome do configmap 
@@ -74,7 +77,7 @@ spec:
             - mountPath: "/go/pvc"
               name: goserver-volume #aqui estamos identificando nosso PVC
               
-
+      #volumes:
       volumes: #estamos criando um volume aqui, para injetar o confimap-family
         - name: config
           configMap:

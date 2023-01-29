@@ -4,8 +4,6 @@ Repository of registry about study of Kubernetes.
 
 ## Requirements
 
----
-
 - Docker version:
 
   > DOCKER >=  20.10.23
@@ -20,7 +18,5 @@ Repository of registry about study of Kubernetes.
 
 
 ## Execution Minikube:
-
----
 
   > minikube start --driver=docker

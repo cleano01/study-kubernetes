@@ -1,8 +1,9 @@
 # study-kubernetes
+---
 Repository of registry about study of Kubernetes.
 
 ## Requirements
-
+---
 - Docker version:
 
   > DOCKER >=  20.10.23
@@ -14,3 +15,8 @@ Repository of registry about study of Kubernetes.
 - Kubectl version:
 
   > KUBECTL >= 4.5.7
+
+
+Execution Minikube:
+---
+  > minikube start --driver=docker

@@ -1,11 +1,15 @@
 apiVersion: v1
-kind: Pod 
+kind: Pod # type of manifest/resource
 metadata:
-  name: "goserver"
+  #name: name of pod
+  name: "goserver" 
+  #label: type identification
   labels:
     app: "goserver"
-spec: #especificação do POD
+#spec: pod specification
+spec: 
   containers:
-    - name: goserver #nome do container
-      image: "cleano/hello-go:latest" #endereço para pegar a imagem
-
+    #-name: nome of container 
+    - name: goserver
+      #image: address of image to download
+      image: "cleano/hello-go:latest"

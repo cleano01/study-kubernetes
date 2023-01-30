@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap #type of manifest/resource
+metadata:
+  name: goserver-env #name of configmap
+data: #the data of configmap, atribute and value
+  NAME: "cleano🤖"
+  AGE: "28"

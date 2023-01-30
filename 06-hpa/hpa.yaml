@@ -1,0 +1,14 @@
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler # type of manifest/resource
+metadata:
+  #name: name of hpa
+  name: goserver-hpa
+spec:
+ scaleTargetRef:
+   apiVersion: apps/v1 #api da versão do deployment que estamos escalando
+   name: goserver # name application
+   kind: Deployment # type of application
+ minReplicas: 1 #minimo de replicas que vamos começar a aplicação
+ maxReplicas: 5 #maximo de replicas que vamos ter
+ targetCPUUtilizationPercentage: 50 #metrica quue vai olhar para scalar os pods
+        

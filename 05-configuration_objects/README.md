@@ -17,6 +17,6 @@ Basic documentation about Configuration Objects of Kubernetes
 
   > echo "my_value_of_my_secret" | base64
 
-    ```bash    ⚠️ base64 is not safe ```
+    ```⚠️ base64 is not safe ```
 
 

@@ -1,4 +1,4 @@
-# 04-service ☸
+# 05-service ☸
 Basic documentation about Configuration Objects of Kubernetes
 
 ### Short Description
@@ -10,5 +10,13 @@ Basic documentation about Configuration Objects of Kubernetes
 * SECRET:
 
   Contains secret data of a certain type.
+
+### Generate value for secrets
+-----------------
+* Execute command bellow:
+
+  > echo "my_value_of_my_secret" | base64
+
+    ```bash    ⚠️ base64 is not safe ```
 
 

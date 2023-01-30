@@ -70,23 +70,24 @@ spec:
                 name: goserver-env #takes values of environment variable named goserver-env
             - secretRef: 
                 name: goserver-secret #takes values of secrety named goserver-env
-                
-          volumeMounts: #criando um volume para o container
-            - mountPath: "/go/myfamily" #caminho do nosso volume
-              name: config #pegamos o volume que criamos com nome "config"
+          
+          #volumeMounts: used to be create volumes to Pods in the container's file system
+          volumeMounts: 
+            - mountPath: "/go/myfamily" #path of volume
+              name: config #we take the volume we created with name "config"
               readOnly: true
-            - mountPath: "/go/pvc"
-              name: goserver-volume #aqui estamos identificando nosso PVC
+            - mountPath: "/go/pvc" #path of volume
+              name: goserver-volume #here we are identifying our PVC
               
-      #volumes:
-      volumes: #estamos criando um volume aqui, para injetar o confimap-family
-        - name: config
+      #volumes: Can be mounted by containers belonging to the pod.
+      volumes: #we are creating a volume here, to inject the configmap-family
+        - name: config # name volume
           configMap:
-            name: configmap-family
+            name: configmap-family #name of ConfigMap
             items:
-              - key: members
-                path: "family.txt"
-        - name: goserver-volume 
+              - key: members # key of datas
+                path: "family.txt" #file that will be generated with the key data
+        - name: goserver-volume #name volume
           persistentVolumeClaim:
-            claimName:  goserver-pvc #Nome do nosso PVC      
+            claimName:  goserver-pvc #name of PVC      
         

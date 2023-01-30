@@ -1,0 +1,16 @@
+apiVersion: apps/v1
+kind: Service # type of manifest/resource
+metadata:
+  #name: name of service
+  name: goserver-service 
+spec:
+  #selector: Filter the Pods to the Service
+  selector:
+    app: goserver #takes all the PODs  with named 'goserver'
+  type: LoadBalancer #type of service
+  ports:
+  - name: goserver-service #we insert a name for the the service
+    port: 80 #port of service
+    targetPort: 8000 #port of container/pod/application
+    protocol: TCP #type connection
+        

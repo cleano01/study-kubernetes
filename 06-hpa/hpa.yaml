@@ -5,10 +5,10 @@ metadata:
   name: goserver-hpa
 spec:
  scaleTargetRef:
-   apiVersion: apps/v1 #api da versão do deployment que estamos escalando
+   apiVersion: apps/v1 #api of the deployment version we are scaling
    name: goserver # name application
    kind: Deployment # type of application
- minReplicas: 1 #minimo de replicas que vamos começar a aplicação
- maxReplicas: 5 #maximo de replicas que vamos ter
- targetCPUUtilizationPercentage: 50 #metrica quue vai olhar para scalar os pods
+ minReplicas: 1 #minimum number of replicas that we wuil start the application
+ maxReplicas: 5 #maximum number of replicas we will have
+ targetCPUUtilizationPercentage: 50 #metric that will look to scale the pods
         

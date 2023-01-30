@@ -9,3 +9,14 @@ Basic documentation about Deployment of Kubernetes
   
 
 
+
+### Other resources in the deployment manifest
+-----------------
+
+
+|    Resources    | Descrition  |
+| :--------- | :-----------------: |
+| StartupProbe<br/> | .... |
+| ReadinessProbe <br/> | .... |
+| LivenessProbe <br/>| .... |
+

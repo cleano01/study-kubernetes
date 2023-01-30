@@ -64,12 +64,13 @@ spec:
             successThreshold: 1 #number of times the application needs to say that it is "ok"
             #initialDelaySeconds: 15 #wait X seconds to start checking the application can receive traffic
           
-          #envFrom:
-          envFrom: #desse modo, pegamos todas as env que estão no configmap
+          #envFrom: takes values of environment variable
+          envFrom: 
             - configMapRef:
-                name: goserver-env   #nome do configmap 
-            - secretRef: #pegando a secret
-                name: goserver-secret #nome de nossa secret
+                name: goserver-env #takes values of environment variable named goserver-env
+            - secretRef: 
+                name: goserver-secret #takes values of secrety named goserver-env
+                
           volumeMounts: #criando um volume para o container
             - mountPath: "/go/myfamily" #caminho do nosso volume
               name: config #pegamos o volume que criamos com nome "config"

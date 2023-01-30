@@ -16,9 +16,9 @@ Basic documentation about Deployment of Kubernetes
 
 |    Resources    | Descrition  |
 | :--------- | :-----------------: |
-| StartupProbe<br/> | .... |
-| ReadinessProbe <br/> | .... |
-| LivenessProbe <br/>| .... |
+| StartupProbe<br/> | Checks when Pod is available after startup |
+| ReadinessProbe <br/> | Used when we are creating a new Pod, as the Pod is unable to process requests |
+| LivenessProbe <br/>| Process that checks if the process (Pod) is alive or dead |
 | EnvFrom <br/>| .... |
 | VolumeMounts <br/>| .... |
 | Volumes <br/>| .... |

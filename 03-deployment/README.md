@@ -19,4 +19,7 @@ Basic documentation about Deployment of Kubernetes
 | StartupProbe<br/> | .... |
 | ReadinessProbe <br/> | .... |
 | LivenessProbe <br/>| .... |
+| EnvFrom <br/>| .... |
+| VolumeMounts <br/>| .... |
+| Volumes <br/>| .... |
 

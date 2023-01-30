@@ -35,34 +35,34 @@ spec:
               cpu: "0.6"
               memory: 25Mi              
               
-          #startupProbe:
-          startupProbe: #verifica se aplicação estar pronta para receber trafego
+          #startupProbe: checks if application is ready to receive to traffic
+          startupProbe: 
             httpGet:
-              path: /healthz #end point para checar a aplicação
+              path: /healthz #endpoint to check if application  is healthy
               port: 8000
-            periodSeconds: 3 #checa a aplicação de X em X segundos
-            failureThreshold: 30 #quantidade de erros limites para reinicar
+            periodSeconds: 3 #checks the application in X and X time in seconds
+            failureThreshold: 30 #quantity of errors limite to restart the application
           
-          #readinessProbe:
-          readinessProbe: #verifica se aplicação estar pronta para receber trafego
+          #readinessProbe: checks if application is ready to receive to traffic
+          readinessProbe: 
             httpGet:
-              path: /healthz #end point para checar a aplicação
+              path: /healthz #endpoint to check if application  is healthy
               port: 8000
-            periodSeconds: 3 #checa a aplicação de X em X segundos
-            failureThreshold: 1 #quantidade de erros limites para reinicar
-            timeoutSeconds: 1 #demora de X segundos no healthz para request  em /healthz
-            #initialDelaySeconds:  10 #aguarda X segundos para começar a verificar a aplicação se pode receber trafego
+            periodSeconds: 3 #checks the application in X and X time in seconds
+            failureThreshold: 1 #quantity of errors limite to restart the application
+            timeoutSeconds: 1 #time limit to endpoint /healthz to response
+            #initialDelaySeconds:  10 #wait X seconds to start checking the application can receive traffic
           
-          #livenessProbe:
-          livenessProbe: #checa a aplicação
+          #livenessProbe: check application in times
+          livenessProbe: 
             httpGet:
-              path: /healthz #end point para checar a aplicação
+              path: /healthz #endpoint to check if application  is healthy
               port: 8000
-            periodSeconds: 5 #checa a aplicação de X em X segundos
-            failureThreshold: 1 #quantidade de erros limites para reinicar
-            timeoutSeconds: 1 #demora de X segundos no healthz para request  em /healthz
-            successThreshold: 1 #quantidade de vezes que aplicação precisa para dizer que estar "ok"
-            #initialDelaySeconds: 15
+            periodSeconds: 5 #checks the application in X and X time in seconds
+            failureThreshold: 1 #quantity of errors limite to restart the application
+            timeoutSeconds: 1 #time limit to endpoint /healthz to response
+            successThreshold: 1 #number of times the application needs to say that it is "ok"
+            #initialDelaySeconds: 15 #wait X seconds to start checking the application can receive traffic
           
           #envFrom:
           envFrom: #desse modo, pegamos todas as env que estão no configmap

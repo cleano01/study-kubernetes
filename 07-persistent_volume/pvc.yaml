@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim # type of manifest/resource
+metadata:
+  name: goserver-pvc # name of persistent volume
+spec:
+  accessModes:
+    - ReadWriteOnce #type access
+  resources:
+    requests: 
+      storage: 1Gi #here we are requesting size for storage
+

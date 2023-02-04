@@ -5,7 +5,7 @@ Basic documentation about StatefulSet of Kubernetes
 -----------------
 * STATEFULSET:
 
-  ...
+  Save state of application
 
   
   

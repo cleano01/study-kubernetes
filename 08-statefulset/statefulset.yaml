@@ -1,17 +1,17 @@
 apiVersion: apps/v1
-kind: StatefulSet  # type of manifest/resource
+kind: StatefulSet  #type of manifest/resource
 metadata:
-  name: mysql  # name of statefulset
+  name: mysql  #name of statefulset
   labels:
-    app: mysql # label fo satefulset
+    app: mysql #label of satefulset
 spec:
   selector:
     matchLabels:
-      app: mysql
-  serviceName: mysql-h #
-  #podManagementPolicy: Parallel #criação de Pod forma parelela do nosso StatefulSet
-  replicas: 3
-  template:
+      app: mysql #name of Pod
+  serviceName: mysql-h #name of service
+  #podManagementPolicy: Parallel ##creating a Pod parallel to our StatefulSet
+  replicas: 3 #number of replicas
+  template: #temaplate of POD
     metadata:
       labels:
         app: mysql
@@ -28,12 +28,12 @@ spec:
 
   volumeClaimTemplates:
   - metadata:
-      name: mysql-volume
+      name: mysql-volume #name of persistent volume
     spec:
       accessModes:
-        - ReadWriteOnce
+        - ReadWriteOnce #type access
       resources:
         requests:
-          storage: 1Gi
+          storage: 1Gi #disk reserved space
             
     

@@ -1,4 +1,4 @@
-# 10-Cert Manager  ☸
+# 08-Ingress  ☸
 Basic documentation about Ingress of Kubernetes
 
 ### Short Description

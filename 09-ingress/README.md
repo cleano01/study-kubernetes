@@ -5,7 +5,7 @@ Basic documentation about Ingress of Kubernetes
 -----------------
 * INGRESS:
 
-  ...
+  Resource that allows exposing your service to the external network.
 
 
 ### Links to Steps of Ingress

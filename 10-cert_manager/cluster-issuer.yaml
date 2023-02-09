@@ -1,0 +1,15 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt
+  namespace: cert-manager
+spec:
+  acme: #certificate type
+    server: https://acme-v02.api.letsencrypt.org/directory #resolve the challenge
+    email: user@gmail.com #responsible person's email
+    privateKeySecretRef:
+      name: letsencrypt-tls #name of key
+    solvers: #configure how we are going to use the certificate in our http/proxy
+    -http01: 
+      ingress:
+        class: nginx

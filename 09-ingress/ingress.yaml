@@ -4,7 +4,7 @@ metadata:
   name: ingress-host
   annotations: 
     kubernetes.io/ingress.class: "nginx" #class do nosso ingress, nesse caso do nginx
-    cert-manager.io/cluster-issuer:: "letsencrypt" #ingress vai utilizar
+    cert-manager.io/cluster-issuer:: "letsencrypt" #ingress will use the certificate manager
     ingress.kubernetes.io/force-ssl-redirect: "true" #redirect http to https
 spec:
   rules:
@@ -20,5 +20,5 @@ spec:
               number: 80
   tls:
   - hosts:
-    - "ingress.my.site.com.br" #dominio que vai utlizar o tls
+    - "ingress.my.site.com.br" #dominio to use the TLS
     secretName: letsencrypt-tls

@@ -21,4 +21,4 @@ spec:
   tls:
   - hosts:
     - "ingress.my.site.com.br" #dominio to use the TLS
-    secretName: letsencrypt-tls
+    secretName: letsencrypt-tls #value of secret of cert manager

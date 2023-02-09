@@ -12,7 +12,7 @@ Basic documentation about Ingress of Kubernetes
 -----------------
 * INSTALL:
 
-  [...]()
+  [NGINX Ingress](https://kubernetes.github.io/ingress-nginx/deploy/)
   
 
 

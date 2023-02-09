@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-host
+  annotations: 
+    kubernetes.io/ingress.class: "nginx" #class do nosso ingress, nesse caso do nginx
+    cert-manager.io/cluster-issuer:: "letsencrypt" #ingress vai utilizar
+    ingress.kubernetes.io/force-ssl-redirect: "true" #redirect http to https
+spec:
+  rules:
+  - host: "ingress.my.site.com.br" #one of the hosts that will be accepted in this ingress
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/" #rule to access
+        backend:
+          service: #name of the service we want to call from our rule
+            name: goserver-service
+            port: 
+              number: 80
+  tls:
+  - hosts:
+    - "ingress.my.site.com.br" #dominio que vai utlizar o tls
+    secretName: letsencrypt-tls

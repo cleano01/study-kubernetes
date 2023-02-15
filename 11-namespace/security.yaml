@@ -6,13 +6,13 @@ metadata:
 ---
 
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole #regra para cluster
+kind: ClusterRole #type of rule for the cluster
 metadata:
   name: server-read
-rules:
-- apiGroups: [""]
-  resources: ["pods","services"]
-  verbs: ["get","watch","list"]
+rules: #rules bellow for the  cluster
+- apiGroups: [""] #determines which features we will have in our rule
+  resources: ["pods","services"] #resources to used
+  verbs: ["get","watch","list"] #actions that can be used on resources
 - apiGroups: ["apps"]
   resources: ["deployments"]
   verbs: ["get","watch","list"]  
@@ -20,7 +20,7 @@ rules:
 ---
 
 apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding #regra para o cluster
+kind: ClusterRoleBinding #type of rule for the cluster
 metadata:
   name: server-read-bind
 subjects:
@@ -39,7 +39,7 @@ roleRef:
 # metadata:
 #   name: server-read
 # rules:
-# - apiGroups: [""] #determina quais recursos vamos ter na nossa regra
+# - apiGroups: [""] #determines which features we will have in our rule
 #   resources: ["pods","services"] #recursos
 #   verbs: ["get","watch","list"] #ações que pode ser usados nos recursos
 # - apiGroups: ["apps"]

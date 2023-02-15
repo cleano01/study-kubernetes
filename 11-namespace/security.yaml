@@ -23,13 +23,13 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding #type of rule for the cluster
 metadata:
   name: server-read-bind
-subjects:
+subjects: #the set of users and processes that want to access the Kubernetes via API.
 - kind: ServiceAccount
-  name: server
+  name: server #name of our serviceaccount
   namespace: prod #name of namespace
 roleRef: #rule of reference to namespace
   kind: ClusterRole
-  name: server-read
+  name: server-read #name of rule to namespace
   apiGroup: rbac.authorization.k8s.io
 
 # ---

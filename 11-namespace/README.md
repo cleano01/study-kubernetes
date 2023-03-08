@@ -5,7 +5,7 @@ Basic documentation about Namespace of Kubernetes
 -----------------
 * Namespace:
 
-  Isolation resources and rules for the cluster
+  Isolation resources and rules for the cluster.
 
 
 
